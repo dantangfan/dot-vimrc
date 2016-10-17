@@ -103,4 +103,8 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'fisadev/fisa-vim-colorscheme'
 
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'carlosgaldino/elixir-snippets'
+Bundle 'thinca/vim-ref'
+"Bundle 'awetzel/elixir.nvim'
+
 filetype plugin indent on     " required!

@@ -14,8 +14,8 @@ syntax on
 "--------
 " color scheme
 set background=dark
-color solarized
-
+" color solarized
+"
 " highlight current line
 au WinLeave * set nocursorline nocursorcolumn
 au WinEnter * set cursorline cursorcolumn
@@ -23,7 +23,7 @@ set cursorline cursorcolumn
 
 " search
 set incsearch
-"set highlight 	" conflict with highlight current line
+" set highlight 	" conflict with highlight current line
 set ignorecase
 set smartcase
 
@@ -266,3 +266,52 @@ if has("gui_running")
     map <D-9> 9gt
     map <D-0> :tablast<CR>
 endif
+
+"------------------
+" syntastic
+"------------------
+
+" elixir
+au BufNewFile,BufRead *.exs set ft=elixir
+let g:tagbar_type_elixir = {'ctagstype': 'elixir', 'kinds': ['f:functions:0:0', 'c:callbacks:0:0', 'd:delegates:0:0', 'e:exceptions:0:0', 'i:implementations:0:0', 'a:macros:0:0', 'o:operators:0:0', 'm:modules:0:0', 'p:protocols:0:0', 'r:records:0:0'], 'sro': '.', 'kind2scope': {'m': 'modules'}, 'scope2kind': {'modules': 'm'}}
+
+" js
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint'
+
+" python ,use pip to install the plugins
+
+" ###### 多语言语法检查
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+" 检测到错误和警告时的标志
+let g:syntastic_error_symbol='✘✘'
+let g:syntastic_warning_symbol='➤➤'
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
+let g:syntastic_enable_highlighting=1
+" 使用pyflakes,速度比pylint快
+" 需要安装 pep8 或者 pyflakes，使用pip安装  ,pep8是python的格式检测神器，建议安装。
+let g:syntastic_python_checkers=['pep8', 'pyflakes']
+let g:syntastic_python_pep8_args='--ignore=E501,E225'
+" 修改高亮的背景色, 适应主题
+highlight SyntasticErrorSign guifg=white guibg=black
+" to see error location list
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_loc_list_height = 5
+function! ToggleErrors()
+    let old_last_winnr = winnr('$')
+    lclose
+    if old_last_winnr == winnr('$')
+        " Nothing was closed, open syntastic error location panel
+        Errors
+    endif
+endfunction
+nnoremap <Leader>s :call ToggleErrors()<cr>
+" 跳转到下一个/上一个错误处
+nnoremap <Leader>sn :lnext<cr>
+nnoremap <Leader>sp :lprevious<cr>
+" 关闭 某一语言的（如C/C++） 的语法检测
+" let g:syntastic_ignore_files=[".*\.c$", ".*\.h$", ".*\.cpp", ".*\.hpp"]
