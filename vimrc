@@ -206,6 +206,8 @@ nmap  <D-/> :
 nnoremap <leader>a :Ack
 nnoremap <leader>v V`]
 
+" 关闭当前编辑buffer
+nmap <c-w> :bdelete<cr>
 "------------------
 " Useful Functions
 "------------------
