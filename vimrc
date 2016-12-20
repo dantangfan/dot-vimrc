@@ -144,7 +144,7 @@ endif
 let NERDChristmasTree=0
 let NERDTreeWinSize=30
 let NERDTreeChDirMode=2
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$', 'build$', '_build$', '\.beam$']
 " let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
 let NERDTreeWinPos = "right"
