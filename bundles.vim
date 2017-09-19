@@ -25,7 +25,7 @@ Bundle 'tomtom/tlib_vim'
 "-----------------
 " Fast navigation
 "-----------------
-Bundle 'edsono/vim-matchit'
+"Bundle 'edsono/vim-matchit' "失效了
 Bundle 'Lokaltog/vim-easymotion'
 
 "--------------
@@ -107,7 +107,7 @@ Bundle 'elixir-lang/vim-elixir'
 Bundle 'thinca/vim-ref'
 "Bundle 'awetzel/elixir.nvim'
 
-
 Bundle 'leafgarland/typescript-vim'
+Bundle "SirVer/ultisnips"
 
 filetype plugin indent on     " required!
